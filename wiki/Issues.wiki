@@ -1,2 +1,0 @@
-#summary Issues
-TacSoc's bug tracker is hosted on Launchpad and can be found here: https://bugs.launchpad.net/tacsoc
