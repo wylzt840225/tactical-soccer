@@ -1,6 +1,7 @@
 package com.yogarine.tacsoc;
 
 import android.graphics.Canvas;
+import android.util.Log;
 import android.view.SurfaceHolder;
 
 public class GameThread extends Thread {
@@ -17,7 +18,14 @@ public class GameThread extends Thread {
 
 	@Override
 	public void run() {
+		int frames = 0;
+
 		while (running) {
+			frames++;
+			if (frames > 60) {
+				frames = 0;
+				Log.d("GameThread", "60 frames");
+			}
 			_canvas = null;
 			try {
 				_canvas = _surfaceHolder.lockCanvas(null);

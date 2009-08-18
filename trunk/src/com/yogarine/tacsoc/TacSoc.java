@@ -15,10 +15,11 @@ public class TacSoc extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		_layoutParams = new LayoutParams(FILL_PARENT,FILL_PARENT);
-		TwoWayScrollView twoWayScrollView = new TwoWayScrollView(this);
+//		TwoWayScrollView twoWayScrollView = new TwoWayScrollView(this);
 		GameView gameView = new GameView(this);
-		twoWayScrollView.addView(gameView,_layoutParams);
-		setContentView(twoWayScrollView,_layoutParams);
+//		twoWayScrollView.addView(gameView,_layoutParams);
+//		setContentView(twoWayScrollView,_layoutParams);
+		setContentView(gameView,_layoutParams);
 	}
 
 }
