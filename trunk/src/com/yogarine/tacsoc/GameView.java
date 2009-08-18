@@ -115,11 +115,11 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback, Ges
 	}
 
 	public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
-		Log.d("TacSoc", "-- GameView.onScroll(e1,e2,"+distanceX+","+distanceY+")");
+//		Log.d("TacSoc", "-- GameView.onScroll(e1,e2,"+distanceX+","+distanceY+")");
 		scrollX -= (int)distanceX;
 		scrollY -= (int)distanceY;
-		Log.d("TacSoc", "-- scrollX = "+scrollX);
-		Log.d("TacSoc", "-- scrollY = "+scrollY);
+//		Log.d("TacSoc", "-- scrollX = "+scrollX);
+//		Log.d("TacSoc", "-- scrollY = "+scrollY);
 		return true;
 	}
 
