@@ -17,14 +17,9 @@ public class GameThread extends Thread {
 
 	@Override
 	public void run() {
-		int frames = 0;
-
 		while (running) {
-			frames++;
-			if (frames > 60) {
-				frames = 0;
-			}
 			_canvas = null;
+			if (!_gameView.dirty) continue;
 			try {
 				_canvas = _surfaceHolder.lockCanvas(null);
 				synchronized (_surfaceHolder) {
