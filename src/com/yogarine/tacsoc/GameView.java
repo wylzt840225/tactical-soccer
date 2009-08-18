@@ -7,7 +7,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
-import android.util.Log;
+//import android.util.Log;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
@@ -16,6 +16,7 @@ import android.view.SurfaceView;
 public class GameView extends SurfaceView implements SurfaceHolder.Callback, GestureDetector.OnGestureListener {
 	public int scrollX = 0;
 	public int scrollY = 0;
+	public boolean dirty = true;
 	private int _tempX = 0;
 	private int _tempY = 0;
 	private GestureDetector _gestureDetector;
@@ -81,22 +82,23 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback, Ges
 		canvas.drawColor(Color.BLACK);
 		_tempX = scrollX;
 		_tempY = scrollY;
+//		Log.d("onDraw",_tempX+","+_tempY);
 //		timestampStart = System.currentTimeMillis();
-		for (ix=0; ix<3200; ix+=64) {
-			for (iy=0; iy<2400; iy+=64) {
+		for (ix=0; ix<1280; ix+=64) {
+			for (iy=0; iy<640; iy+=64) {
 				if (_tempX+ix < -64) continue;
 				else if (_tempY+iy < -64) continue;
 				else if (_tempX+ix > 480) continue;
 				else if (_tempY+iy > 480) continue;
 				else
 					canvas.drawBitmap(_grass, _tempX+ix, _tempY+iy, null);				
-			}			
+			}
 		}
 //		timestampEnd = System.currentTimeMillis();
 		canvas.drawBitmap(_scratch, _tempX+10, _tempY+10, null);
 		canvas.drawBitmap(_scratch, _tempX+10+128, _tempY+10+64, null);
 		canvas.drawBitmap(_scratch, _tempX+10+320, _tempY+10+320, null);
-
+		dirty = false;
 //		Log.d("onDraw","time: "+(timestampEnd - timestampStart));
 	}
 
@@ -118,6 +120,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback, Ges
 //		Log.d("TacSoc", "-- GameView.onScroll(e1,e2,"+distanceX+","+distanceY+")");
 		scrollX -= (int)distanceX;
 		scrollY -= (int)distanceY;
+		dirty = true;
 //		Log.d("TacSoc", "-- scrollX = "+scrollX);
 //		Log.d("TacSoc", "-- scrollY = "+scrollY);
 		return true;
