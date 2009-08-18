@@ -1,7 +1,6 @@
 package com.yogarine.tacsoc;
 
 import android.graphics.Canvas;
-import android.util.Log;
 import android.view.SurfaceHolder;
 
 public class GameThread extends Thread {
@@ -24,7 +23,6 @@ public class GameThread extends Thread {
 			frames++;
 			if (frames > 60) {
 				frames = 0;
-				Log.d("GameThread", "60 frames");
 			}
 			_canvas = null;
 			try {

@@ -2,7 +2,6 @@ package com.yogarine.tacsoc;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.GestureDetector.OnGestureListener;
@@ -38,7 +37,6 @@ public class TwoWayScrollView extends FrameLayout implements OnGestureListener {
 	}
 
 	public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
-		Log.d("TacSoc", "-- TwoWayScrollView.onFling()");
 		return false;
 	}
 
