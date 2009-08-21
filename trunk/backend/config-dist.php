@@ -4,20 +4,12 @@
  * Site configuration file.
  * 
  * This file contains the setup class
- * 
- * @author Alwin Garside <alwin@linfox.com.br>
- * @copyright Copyright (c) 2007,2008 LinFox Serviços de Informatica LTDA.
- * @license http://www.gnu.org/licenses/gpl.html GNU General Public License
- * @version 0.4
- * @package libfox
  */
 
 /**
  * Setup class
  * 
  * This abstract class contains constants with the sites configuration.
- * 
- * @package libfox
  */
 abstract class setup
 {
