@@ -37,20 +37,21 @@ public class GameThread extends Thread {
 	public void run() {
 		while (running) {
 			_canvas = null;
-			if (!_gameView.dirty) continue;
-			try {
-				_canvas = _surfaceHolder.lockCanvas(null);
-				synchronized (_surfaceHolder) {
-					_gameView.onDraw(_canvas);
-				}
-	        } finally {
-	            // do this in a finally so that if an exception is thrown
-	            // during the above, we don't leave the Surface in an
-	            // inconsistent state
-	            if (_canvas != null) {
-	                _surfaceHolder.unlockCanvasAndPost(_canvas);
-	            }
-	        }
+			if (_gameView.dirty) {
+				try {
+					_canvas = _surfaceHolder.lockCanvas(null);
+					synchronized (_surfaceHolder) {
+						_gameView.onDraw(_canvas);
+					}
+		        } finally {
+		            // do this in a finally so that if an exception is thrown
+		            // during the above, we don't leave the Surface in an
+		            // inconsistent state
+		            if (_canvas != null) {
+		                _surfaceHolder.unlockCanvasAndPost(_canvas);
+		            }
+		        }
+			}
 	    }
 	}
 
