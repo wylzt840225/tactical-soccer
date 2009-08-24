@@ -40,18 +40,20 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback, Ges
 	private GestureDetector _gestureDetector;
 	private SurfaceHolder _surfaceHolder;
 	private GameThread _gameThread;
-	private Bitmap _scratch;
 	private Bitmap _grass;
 //	private ArrayList<Bitmap> _graphics = new ArrayList<Bitmap>();
 	
 	public GameView(Context context) {
 		super(context);
+		_init(context);
+	}
+	
+	private void _init(Context context) {
 		setFocusable(true);
 		_gestureDetector = new GestureDetector(context, this);
 		_surfaceHolder = getHolder();
 		_surfaceHolder.addCallback(this);
 		_gameThread = new GameThread(_surfaceHolder,this);
-		_scratch = BitmapFactory.decodeResource(getResources(), R.drawable.player);
 		_grass = BitmapFactory.decodeResource(getResources(), R.drawable.grass);
 	}
 
@@ -93,15 +95,11 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback, Ges
 
 	@Override
 	public void onDraw(Canvas canvas) {
-//		long timestampStart = 0;
-//		long timestampEnd = 0;
 		int ix = 0;
 		int iy = 0;
 		canvas.drawColor(Color.BLACK);
 		_tempX = scrollX;
 		_tempY = scrollY;
-//		Log.d("onDraw",_tempX+","+_tempY);
-//		timestampStart = System.currentTimeMillis();
 		for (ix=0; ix<1280; ix+=64) {
 			for (iy=0; iy<640; iy+=64) {
 				if (_tempX+ix < -64) continue;
@@ -112,12 +110,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback, Ges
 					canvas.drawBitmap(_grass, _tempX+ix, _tempY+iy, null);				
 			}
 		}
-//		timestampEnd = System.currentTimeMillis();
-		canvas.drawBitmap(_scratch, _tempX+10, _tempY+10, null);
-		canvas.drawBitmap(_scratch, _tempX+10+128, _tempY+10+64, null);
-		canvas.drawBitmap(_scratch, _tempX+10+320, _tempY+10+320, null);
 		dirty = false;
-//		Log.d("onDraw","time: "+(timestampEnd - timestampStart));
 	}
 
 	public boolean onDown(MotionEvent e) {
