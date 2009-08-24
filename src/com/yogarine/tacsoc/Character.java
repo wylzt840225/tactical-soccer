@@ -2,6 +2,7 @@ package com.yogarine.tacsoc;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
 import android.view.GestureDetector.SimpleOnGestureListener;
 
 public class Character extends SimpleOnGestureListener {
@@ -90,6 +91,10 @@ public class Character extends SimpleOnGestureListener {
 	 */
 	public int mot;
 
+	public int x;
+	
+	public int y;
+	
 	private Bitmap _bitmap;
 	
 	public String[] statusEffects;
@@ -100,10 +105,8 @@ public class Character extends SimpleOnGestureListener {
 	}
 	
 	@Override
-	public boolean onDraw() {
-		canvas.drawBitmap(_scratch, _tempX+10, _tempY+10, null);
-		canvas.drawBitmap(_scratch, _tempX+10+128, _tempY+10+64, null);
-		canvas.drawBitmap(_scratch, _tempX+10+320, _tempY+10+320, null);
+	public void onDraw(Canvas canvas) {
+		canvas.drawBitmap(_bitmap, x, y+10, null);
 	}
 
 }
