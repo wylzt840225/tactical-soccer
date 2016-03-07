@@ -1,0 +1,1 @@
+Tactical Soccer, or TacSoc for short, will be a tactical soccer game melding aspects of soccer games, RPG's and soccer managers.
